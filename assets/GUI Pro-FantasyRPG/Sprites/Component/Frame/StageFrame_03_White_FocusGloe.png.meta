@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "d5854ca9-cdd6-4762-baf4-ce12d77588aa",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "StageFrame_03_White_FocusGloe": {
+      "ver": "1.0.4",
+      "uuid": "0da92341-f16d-4fb3-84b8-163e718c3b86",
+      "rawTextureUuid": "d5854ca9-cdd6-4762-baf4-ce12d77588aa",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 106,
+      "height": 106,
+      "rawWidth": 106,
+      "rawHeight": 106,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

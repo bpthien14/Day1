@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "fb639435-4caa-44b0-b154-94a5d39283c7",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "Roulette_BgDeco": {
+      "ver": "1.0.4",
+      "uuid": "967acdb7-8e56-4b6f-a85b-fce465f2267e",
+      "rawTextureUuid": "fb639435-4caa-44b0-b154-94a5d39283c7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 487,
+      "height": 919,
+      "rawWidth": 487,
+      "rawHeight": 919,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "271c9c5d-a757-42d6-85a5-fcc543c80281",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "Button_Rectangle_05_Deco_White_Bg": {
+      "ver": "1.0.4",
+      "uuid": "f5504720-2d3b-4a7d-b994-8bdade91dd8c",
+      "rawTextureUuid": "271c9c5d-a757-42d6-85a5-fcc543c80281",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 82,
+      "height": 77,
+      "rawWidth": 82,
+      "rawHeight": 77,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
