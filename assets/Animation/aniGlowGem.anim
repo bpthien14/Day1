@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "aniRedIcon",
+  "_name": "aniGlowGem",
   "_objFlags": 0,
   "_native": "",
   "_duration": 0.5,
@@ -16,7 +16,7 @@
         },
         {
           "frame": 0.25,
-          "value": 150
+          "value": 0
         },
         {
           "frame": 0.5,

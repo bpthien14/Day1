@@ -1,6 +1,6 @@
 {
   "ver": "2.3.3",
-  "uuid": "93558ed9-e6a7-4584-8389-20684c181985",
+  "uuid": "a44a7c48-d406-4630-a318-7f2dafb9f4bc",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -11,8 +11,8 @@
   "subMetas": {
     "IconSet_Menu_01_Scroll": {
       "ver": "1.0.4",
-      "uuid": "28a981d8-a25e-467b-9d9c-d4c24756f61a",
-      "rawTextureUuid": "93558ed9-e6a7-4584-8389-20684c181985",
+      "uuid": "c6788554-42d3-4a58-bceb-1a21b8eb81c9",
+      "rawTextureUuid": "a44a7c48-d406-4630-a318-7f2dafb9f4bc",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
