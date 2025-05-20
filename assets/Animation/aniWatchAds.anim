@@ -1,0 +1,33 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "aniWatchAds",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.5,
+  "sample": 60,
+  "speed": 0.5,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 18.05
+        },
+        {
+          "frame": 0.25,
+          "value": 24
+        },
+        {
+          "frame": 0.43333333333333335,
+          "value": 18.850704500106076
+        },
+        {
+          "frame": 0.5,
+          "value": 18.05
+        }
+      ]
+    }
+  },
+  "events": []
+}
