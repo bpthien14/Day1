@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "jumpNotice",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 60,
+  "speed": 2,
+  "wrapMode": 22,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 48.295239575001006,
+          "curve": [
+            -0.0071581196581196,
+            0.4228632478632479,
+            0.3260683760683761,
+            0.999145299145299
+          ]
+        },
+        {
+          "frame": 1,
+          "value": 56
+        }
+      ]
+    }
+  },
+  "events": []
+}
