@@ -13,7 +13,15 @@ cc.Class({
         moveButton: {
             default: null,
             type: cc.Button
-        }
+        },
+        labelVolume: {
+            type: cc.Label,
+            default: null
+        },
+        labelPercent: {
+            type: cc.Label,
+            default: null
+        },
     },
 
     onLoad() {

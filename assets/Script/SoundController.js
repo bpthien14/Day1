@@ -20,7 +20,10 @@ cc.Class({
             type: cc.AudioClip,
             default: null
         },
-        
+        labelVolume: {
+            type: cc.Label,
+            default: null
+        },
     },
 
     playBGM() {
@@ -53,6 +56,15 @@ cc.Class({
         this.currentVol = parseFloat(Math.max(volume - 0.1, 0.0));
         cc.audioEngine.setVolume(this.idBGM, volume.toFixed(1));
         console.log('🔉 Giảm âm lượng:', volume.toFixed(1));
+    },
+    updateVolumeLabel() {
+        if (this.labelVolume) {
+            this.labelVolume.string = 'Âm lượng: ' + Math.round(this.currentVol * 100) + '%';
+        }
+    
+    },
+    update(dt) {
+        this.updateVolumeLabel();
     }
-    // update (dt) {},
-});
+
+    });
