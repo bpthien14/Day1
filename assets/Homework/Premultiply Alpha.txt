@@ -1,1 +1,0 @@
-https://docs.cocos.com/creator/2.1/manual/en/asset-workflow/sprite.html#premultiply-alpha
