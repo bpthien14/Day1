@@ -20,26 +20,39 @@ cc.Class({
             type: cc.AudioClip,
             default: null
         },
+        
     },
 
-    // LIFE-CYCLE CALLBACKS:
     playBGM() {
         console.log("playBGM");
-        cc.audioEngine.playMusic(this.audioSourceBGM, true);
+        this.idBGM = cc.audioEngine.playMusic(this.audioSourceBGM, true);
     },
 
     onLoad () {
         this.playBGM();
     },
 
-
     playClick() {
         console.log("playClick");
         cc.audioEngine.play(this.audioSourceClick, false, 1);
     },
+
     start () {
-        // this.playBGM();
+        this.currentVol = 1;
     },
 
+    increaseVolume() {
+        let volume = this.currentVol;
+        this.currentVol = parseFloat(Math.min(volume + 0.1, 1.0));
+        cc.audioEngine.setVolume(this.idBGM, volume.toFixed(1));
+        console.log('🔊 Tăng âm lượng:', volume.toFixed(1));
+    },
+
+    decreaseVolume() {
+        let volume = this.currentVol;
+        this.currentVol = parseFloat(Math.max(volume - 0.1, 0.0));
+        cc.audioEngine.setVolume(this.idBGM, volume.toFixed(1));
+        console.log('🔉 Giảm âm lượng:', volume.toFixed(1));
+    }
     // update (dt) {},
 });
