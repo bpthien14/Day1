@@ -1,6 +1,6 @@
 {
   "ver": "2.3.3",
-  "uuid": "6ba23a74-b723-4508-bcef-a3f1da23439b",
+  "uuid": "849c32ff-27a3-43fd-82c5-68b02ddfc241",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -11,8 +11,8 @@
   "subMetas": {
     "ItemFrame_02_Bg_White_Bg": {
       "ver": "1.0.4",
-      "uuid": "4438ba58-1b65-48d8-928c-80a8376e9eb7",
-      "rawTextureUuid": "6ba23a74-b723-4508-bcef-a3f1da23439b",
+      "uuid": "89ef718b-e490-4928-9ff9-e78c86acdd26",
+      "rawTextureUuid": "849c32ff-27a3-43fd-82c5-68b02ddfc241",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
