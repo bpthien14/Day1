@@ -2,7 +2,7 @@
 
 ## Tổng quan
 
-Auto Atlas Asset là một sprite sheet. Trong Cocos Creator, nhờ có chức năng sẵn có là Auto Atlas, bạn có thể chỉ định một loạt các hình ảnh nhỏ (sprite) được đóng gói vào một hình ảnh lớn, chức năng này tương tự như công cụ Texture Packer.
+Auto Atlas Asset là một sprite sheet. Trong Cocos Creator, nhờ có chức năng sẵn có là Auto Atlas, có thể chỉ định một loạt các hình ảnh nhỏ (sprite) được đóng gói vào một hình ảnh lớn, chức năng này tương tự như công cụ Texture Packer.
 
 ## Cách tạo Auto Atlas
 
@@ -35,9 +35,9 @@ Sau khi chọn một tài nguyên Auto Atlas trong bảng Assets, bảng Propert
 
 ## Xem trước kết quả
 
-Sau khi cấu hình xong, bạn có thể nhấn nút **Preview** để xem trước kết quả đóng gói. Kết quả sẽ được hiển thị bên dưới bảng thuộc tính.
+Sau khi cấu hình xong, có thể nhấn nút **Preview** để xem trước kết quả đóng gói. Kết quả sẽ được hiển thị bên dưới bảng thuộc tính.
 
-> ⚠️ **Lưu ý:** Mỗi khi thay đổi cấu hình, bạn phải nhấn Preview lại để làm mới bản xem trước.
+> ⚠️ **Lưu ý:** Mỗi khi thay đổi cấu hình, phải nhấn Preview lại để làm mới bản xem trước.
 
 Kết quả xem trước bao gồm:
 
