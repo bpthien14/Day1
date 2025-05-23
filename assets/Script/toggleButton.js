@@ -1,4 +1,3 @@
-// Gắn script này vào Canvas hoặc node chứa button
 cc.Class({
     extends: cc.Component,
     properties: {
