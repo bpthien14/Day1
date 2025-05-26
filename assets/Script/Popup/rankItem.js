@@ -80,11 +80,11 @@ cc.Class({
             if (rank === 1) {
                 this.rankLabel.node.color = cc.Color.YELLOW; 
             } else if (rank === 2) {
-                this.rankLabel.node.color = cc.Color.WHITE; 
+                this.rankLabel.node.color = cc.Color.MAGENTA; 
             } else if (rank === 3) {
                 this.rankLabel.node.color = new cc.Color(205, 127, 50); 
             } else {
-                this.rankLabel.node.color = cc.Color.BLACK;
+                this.rankLabel.node.color = cc.Color.WHITE;
             }
         }
     },
@@ -125,7 +125,7 @@ cc.Class({
     loadAvatar(avatarName) {
         if (!this.avatarSprite || !avatarName) return;
 
-        cc.resources.load("avatars/" + avatarName, cc.SpriteFrame, (err, spriteFrame) => {
+        cc.resources.load("https://avatar.iran.liara.run/public", cc.SpriteFrame, (err, spriteFrame) => {
             if (!err && spriteFrame && this.avatarSprite) {
                 this.avatarSprite.spriteFrame = spriteFrame;
             } else {
@@ -136,7 +136,7 @@ cc.Class({
     },
 
     loadDefaultAvatar() {
-        cc.resources.load("avatars/default_avatar", cc.SpriteFrame, (err, spriteFrame) => {
+        cc.resources.load("https://avatar.iran.liara.run/public", cc.SpriteFrame, (err, spriteFrame) => {
             if (!err && spriteFrame && this.avatarSprite) {
                 this.avatarSprite.spriteFrame = spriteFrame;
             }
