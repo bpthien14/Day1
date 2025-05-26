@@ -70,26 +70,4 @@ cc.Class({
         this.hideRank();
     },
     
-    isAnyPopupShowing() {
-        let settingShowing = false;
-        let rankShowing = false;
-        
-        if (this.popupSetting && this.popupSetting.active) {
-            settingShowing = true;
-        }
-        
-        if (this.popupRank && this.popupRank.active) {
-            rankShowing = true;
-        }
-        
-        return settingShowing || rankShowing;
-    },
-    
-    onBackPressed() {
-        if (this.isAnyPopupShowing()) {
-            this.hideAllPopups();
-            return true; 
-        }
-        return false; 
-    }
 });
