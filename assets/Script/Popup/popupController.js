@@ -1,18 +1,95 @@
 cc.Class({
     extends: cc.Component,
+    
     properties: {
-        popupSetting: require('popupItem'),
+        popupSetting: {
+            default: null,
+            type: cc.Node,
+        },
+        popupRank: {
+            default: null,
+            type: cc.Node,
+        },
     },
+    
+    onLoad() {
+        this.hideAllPopups();
+        
+    },
+    
     showSetting() {
-        this.popupSetting.show();
+        this.hideRank();
+        
+        if (this.popupSetting) {
+            let settingScript = this.popupSetting.getComponent('popupSetting');
+            if (settingScript) {
+                settingScript.show();
+            } else {
+                console.error("popupSetting script not found!");
+            }
+        } else {
+            console.error("popupSetting node not assigned!");
+        }
     },
-    // showRank() {
-    //     this.popupRank.show();
-    // },
+    
+    showRank() {
+        this.hideSetting();
+        
+        if (this.popupRank) {
+            let rankScript = this.popupRank.getComponent('popupRank');
+            if (rankScript) {
+                rankScript.show();
+            } else {
+                console.error("popupRank script not found!");
+            }
+        } else {
+            console.error("popupRank node not assigned!");
+        }
+    },
+    
     hideSetting() {
-        this.popupSetting.hide();
+        if (this.popupSetting) {
+            let settingScript = this.popupSetting.getComponent('popupSetting');
+            if (settingScript) {
+                settingScript.hide();
+            }
+        }
     },
-    // hideRank() {
-    //     this.popupRank.hide();
-    // },
-})
+    
+    hideRank() {
+        if (this.popupRank) {
+            let rankScript = this.popupRank.getComponent('popupRank');
+            if (rankScript) {
+                rankScript.hide();
+            }
+        }
+    },
+    
+    hideAllPopups() {
+        this.hideSetting();
+        this.hideRank();
+    },
+    
+    isAnyPopupShowing() {
+        let settingShowing = false;
+        let rankShowing = false;
+        
+        if (this.popupSetting && this.popupSetting.active) {
+            settingShowing = true;
+        }
+        
+        if (this.popupRank && this.popupRank.active) {
+            rankShowing = true;
+        }
+        
+        return settingShowing || rankShowing;
+    },
+    
+    onBackPressed() {
+        if (this.isAnyPopupShowing()) {
+            this.hideAllPopups();
+            return true; 
+        }
+        return false; 
+    }
+});

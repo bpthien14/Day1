@@ -3,9 +3,6 @@ cc.Class({
     properties: {
 
     },
-    onLoad() {
-        this.node.active = false;
-    },
     show() {    
         this.node.active = true;
         this.node.opacity = 0;
