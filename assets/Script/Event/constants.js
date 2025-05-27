@@ -1,0 +1,9 @@
+const SOUND_EVENTS = {
+    BGM_VOLUME_CHANGED: 'BGM_VOLUME_CHANGED',
+    SFX_VOLUME_CHANGED: 'SFX_VOLUME_CHANGED',
+    PLAY_SFX: 'PLAY_SFX'
+};
+
+module.exports = {
+    SOUND_EVENTS
+};
