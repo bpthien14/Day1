@@ -2,115 +2,84 @@ cc.Class({
     extends: require("popupItem"),
 
     properties: {
-        cellPrefab: {
-            default: null,
-            type: cc.Prefab,
-        },
-        layout: {
-            default: null,
-            type: cc.Node,
-        },
-        scrollView: {
-            default: null,
-            type: cc.ScrollView,
-        },
-        rankData: {
-            default: null,
-            type: cc.JsonAsset,
-        }
+        cellPrefab: cc.Prefab,
+        layout: cc.Node,
+        scrollView: cc.ScrollView,
+        rankData: cc.JsonAsset,
     },
 
     onLoad() {
         this._super();
         this.rankList = [];
+        this._isDataLoaded = false;
+
+        this.initPool(20);
+    },
+    
+    initPool(poolSize) {
+        if (!this.cellPrefab) {
+            console.error("Chưa gán Prefab (cellPrefab) trong Editor!");
+            return;
+        }
+        for (let i = 0; i < poolSize; i++) {
+            let cellNode = cc.instantiate(this.cellPrefab);
+            cellNode.active = false; 
+            this.layout.addChild(cellNode);
+            this.rankList.push(cellNode);
+        }
     },
 
     show() {
         this._super();
-        this.loadRankData();
-    },
-
-    hide() {
-        this._super();
-        this.clearRankItems();
+        if (!this._isDataLoaded) {
+            this.loadRankData();
+            this._isDataLoaded = true;
+        }
+        this.scrollView.scrollToTop(0);
     },
 
     loadRankData() {
-        if (!this.rankData) {
-            console.error("Rank data not found!");
+        if (!this.rankData || !this.rankData.json) {
             return;
         }
 
-        try {
-            const data = this.rankData.json;
-            if (data && data.rankings) {
-                this.createRankItems(data.rankings);
+        const data = this.rankData.json;
+        if (!data || !Array.isArray(data.rankings)) {
+            return;
+        }
+        
+        this.renderRankings(data.rankings);
+    },
+
+    renderRankings(rankingsData) {
+        const totalDataItems = rankingsData.length;
+
+        for (let i = 0; i < this.rankList.length; i++) {
+            const cellNode = this.rankList[i];
+            
+            if (i < totalDataItems) {
+                const rankInfo = rankingsData[i];
+                const itemScript = cellNode.getComponent('rankItem');
+                if (itemScript) {
+                    itemScript.updateData(rankInfo);
+                }
+                cellNode.active = true; 
             } else {
-                console.error("Invalid rank data format!");
+                cellNode.active = false;
             }
-        } catch (error) {
-            console.error("Error parsing rank data:", error);
-        }
-    },
-
-    createRankItems(rankings) {
-        this.clearRankItems();
-
-        rankings.forEach((rankInfo, index) => {
-            this.createRankItem(rankInfo, index);
-        });
-
-        this.updateScrollViewContent();
-    },
-
-    createRankItem(rankInfo, index) {
-        if (!this.cellPrefab) {
-            console.error("Cell prefab not assigned!");
-            return;
-        }
-
-        if (!this.layout) {
-            console.error("Layout not assigned!");
-            return;
-        }
-
-        let cell = cc.instantiate(this.cellPrefab);
-        cell.parent = this.layout;
-        
-        let itemScript = cell.getComponent('rankItem');
-        if (itemScript) {
-            itemScript.updateData(rankInfo);
-        } else {
-            console.error("rankItem script not found on prefab!");
-        }
-
-        this.rankList.push(cell);
-    },
-
-    clearRankItems() {
-        if (!this.rankList) {
-            this.rankList = [];
-            return;
         }
         
-        this.rankList.forEach(item => {
-            if (item && item.isValid) {
-                item.destroy();
+        this.scheduleOnce(() => {
+            if (this.layout && this.layout.isValid) {
+                const layoutComponent = this.layout.getComponent(cc.Layout);
+                if (layoutComponent) {
+                    layoutComponent.updateLayout();
+                }
             }
-        });
-        this.rankList = [];
-    },
-
-    updateScrollViewContent() {
-        if (this.scrollView && this.layout) {
-            let layoutComponent = this.layout.getComponent(cc.Layout);
-            if (layoutComponent) {
-                layoutComponent.updateLayout();
-            }
-        }
+        }, 0);
     },
 
     onDestroy() {
-        this.clearRankItems();
+        this.rankList = [];
     }
 });

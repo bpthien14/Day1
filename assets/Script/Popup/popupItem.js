@@ -4,6 +4,8 @@ cc.Class({
 
     },
     onLoad() {
+        this.node.active = false; 
+        this.node.opacity = 255; 
     },
     show() {    
         this.node.active = true;

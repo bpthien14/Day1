@@ -156,5 +156,6 @@ cc.Class({
         
         mEmitter.instance.emit(SOUND_EVENTS.BGM_VOLUME_CHANGED, this.bgmVolumeSlider.progress);
         mEmitter.instance.emit(SOUND_EVENTS.SFX_VOLUME_CHANGED, this.sfxVolumeSlider.progress);
-    }
+    },
+
 });

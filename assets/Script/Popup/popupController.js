@@ -13,7 +13,7 @@ cc.Class({
     },
     
     onLoad() {
-        this.hideAllPopups();
+        
         
     },
     
