@@ -16,9 +16,6 @@ cc.Class({
     },
 
     onLoad() {
-        if (!mEmitter.instance) {
-            mEmitter.instance = new mEmitter();
-        }
         
         this.loadVolumeSettings();
 

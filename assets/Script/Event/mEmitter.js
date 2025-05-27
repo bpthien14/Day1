@@ -23,5 +23,5 @@ class mEmitter {
         this._emiter.removeListener(event, listener);
     }
 }
-mEmitter.instance = null;
+mEmitter.instance = mEmitter.instance || new mEmitter();
 module.exports = mEmitter;
