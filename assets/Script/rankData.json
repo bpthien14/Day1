@@ -4,7 +4,7 @@
       "rank": 1,
       "playerName": "SeaMaster",
       "score": 99999,
-      "avatar": "https://avatar.iran.liara.run/public",
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=SeaMaster",
       "level": 100,
       "isCurrentPlayer": false
     },
@@ -12,7 +12,7 @@
       "rank": 2,
       "playerName": "DragonKnight", 
       "score": 88888,
-      "avatar": "avatar_2",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=DragonKnight",
       "level": 95,
       "isCurrentPlayer": false
     },
@@ -20,7 +20,7 @@
       "rank": 3,
       "playerName": "ThunderBolt",
       "score": 77777,
-      "avatar": "avatar_3", 
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=ThunderBolt", 
       "level": 88,
       "isCurrentPlayer": false
     },
@@ -28,7 +28,7 @@
       "rank": 4,
       "playerName": "You",
       "score": 66666,
-      "avatar": "avatar_player",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=You",
       "level": 75,
       "isCurrentPlayer": true
     },
@@ -36,7 +36,7 @@
       "rank": 5,
       "playerName": "FireWizard",
       "score": 55555,
-      "avatar": "avatar_4",
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=FireWizard",
       "level": 70,
       "isCurrentPlayer": false
     },
@@ -44,7 +44,7 @@
       "rank": 6,
       "playerName": "IceQueen",
       "score": 44444,
-      "avatar": "avatar_5",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=IceQueen",
       "level": 65,
       "isCurrentPlayer": false
     },
@@ -52,7 +52,7 @@
       "rank": 7,
       "playerName": "ShadowNinja",
       "score": 33333,
-      "avatar": "avatar_6",
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=ShadowNinja",
       "level": 60,
       "isCurrentPlayer": false
     },
@@ -60,7 +60,7 @@
       "rank": 8,
       "playerName": "StarHunter",
       "score": 22222,
-      "avatar": "avatar_7",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=StarHunter",
       "level": 55,
       "isCurrentPlayer": false
     },
@@ -68,7 +68,7 @@
       "rank": 9,
       "playerName": "MoonWalker",
       "score": 11111,
-      "avatar": "avatar_8",
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=MoonWalker",
       "level": 50,
       "isCurrentPlayer": false
     },
@@ -76,7 +76,7 @@
       "rank": 10,
       "playerName": "WindDancer",
       "score": 9999,
-      "avatar": "avatar_9",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=WindDancer",
       "level": 45,
       "isCurrentPlayer": false
     },
@@ -84,7 +84,7 @@
       "rank": 11,
       "playerName": "StormBreaker",
       "score": 8888,
-      "avatar": "avatar_10",
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=StormBreaker",
       "level": 40,
       "isCurrentPlayer": false
     },
@@ -92,7 +92,7 @@
       "rank": 12,
       "playerName": "CrystalMage",
       "score": 7777,
-      "avatar": "avatar_11",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=CrystalMage",
       "level": 38,
       "isCurrentPlayer": false
     },
@@ -100,7 +100,7 @@
       "rank": 13,
       "playerName": "BladeRunner",
       "score": 6666,
-      "avatar": "avatar_12",
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=BladeRunner",
       "level": 35,
       "isCurrentPlayer": false
     },
@@ -108,7 +108,7 @@
       "rank": 14,
       "playerName": "PhoenixRise",
       "score": 5555,
-      "avatar": "avatar_13",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=PhoenixRise",
       "level": 32,
       "isCurrentPlayer": false
     },
@@ -116,7 +116,7 @@
       "rank": 15,
       "playerName": "SkyWarrior",
       "score": 4444,
-      "avatar": "avatar_14",
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=SkyWarrior",
       "level": 30,
       "isCurrentPlayer": false
     },
@@ -124,7 +124,7 @@
       "rank": 16,
       "playerName": "DarkKnight",
       "score": 3333,
-      "avatar": "avatar_15",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=DarkKnight",
       "level": 28,
       "isCurrentPlayer": false
     },
@@ -132,7 +132,7 @@
       "rank": 17,
       "playerName": "LightBringer",
       "score": 2222,
-      "avatar": "avatar_16",
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=LightBringer",
       "level": 25,
       "isCurrentPlayer": false
     },
@@ -140,7 +140,7 @@
       "rank": 18,
       "playerName": "WaveRider",
       "score": 1111,
-      "avatar": "avatar_17",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=WaveRider",
       "level": 22,
       "isCurrentPlayer": false
     },
@@ -148,7 +148,7 @@
       "rank": 19,
       "playerName": "FlameGuard",
       "score": 999,
-      "avatar": "avatar_18",
+      "avatar": "https://avatar.iran.liara.run/public/boy?username=FlameGuard",
       "level": 20,
       "isCurrentPlayer": false
     },
@@ -156,7 +156,7 @@
       "rank": 20,
       "playerName": "EarthShaker",
       "score": 888,
-      "avatar": "avatar_19",
+      "avatar": "https://avatar.iran.liara.run/public/girl?username=EarthShaker",
       "level": 18,
       "isCurrentPlayer": false
     }

@@ -88,6 +88,11 @@ cc.Class({
     },
 
     clearRankItems() {
+        if (!this.rankList) {
+            this.rankList = [];
+            return;
+        }
+        
         this.rankList.forEach(item => {
             if (item && item.isValid) {
                 item.destroy();
