@@ -1,4 +1,5 @@
 const mEmitter = require('mEmitter');
+const { SHOW_EVENTS } = require('../Event/constants');
 
 cc.Class({
     extends: cc.Component,
@@ -15,7 +16,7 @@ cc.Class({
     },
     
     onLoad() {
-        mEmitter.instance.registerEvent('BUTTON_CLICKED', this.showPopup.bind(this));
+        mEmitter.instance.registerEvent(SHOW_EVENTS.SHOW_POPUP, this.showPopup.bind(this));
     },
     
     showPopup(name) {
