@@ -5,9 +5,7 @@ cc.Class({
     extends: cc.Component,
 
     onButtonClick(event, data){
-        console.log("Button clicked:", data);
         mEmitter.instance.emit('BUTTON_CLICKED', data);
         mEmitter.instance.emit(SOUND_EVENTS.PLAY_SFX, 'click');
-
     }
 })

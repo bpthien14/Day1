@@ -77,7 +77,6 @@ cc.Class({
 
         if (_avatarCache[finalUrl]) {
             this.avatarSprite.spriteFrame = _avatarCache[finalUrl];
-            console.log(`Lấy avatar từ cache: ${finalUrl}`);
             this.adjustAvatarSize();
             return;
         }
@@ -89,7 +88,6 @@ cc.Class({
             this.setAvatarLoadingState(false);
 
             if (err) {
-                console.error(`Lỗi khi tải avatar từ URL: ${finalUrl}`, err.message);
                 if (finalUrl.includes("username=default")) {
                     this.avatarSprite.spriteFrame = null; 
                 } else {
@@ -104,7 +102,6 @@ cc.Class({
             
             this.avatarSprite.spriteFrame = spriteFrame;
             this.adjustAvatarSize();
-            console.log(`Đã tải và cache avatar thành công: ${finalUrl}`);
         });
     },
 

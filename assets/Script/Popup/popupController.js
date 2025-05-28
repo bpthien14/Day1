@@ -15,8 +15,6 @@ cc.Class({
     },
     
     onLoad() {
-
-        console.log(mEmitter.instance);
         mEmitter.instance.registerEvent('BUTTON_CLICKED', this.showPopup.bind(this));
     },
     
