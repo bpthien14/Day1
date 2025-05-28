@@ -5,15 +5,17 @@ cc.Class({
         progressBar: {
             default: null,
             type: cc.ProgressBar,
-            tooltip: "Thanh tiến trình chính"
         },
         progressTip: {
             default: null,
             type: cc.Node,
         },
         sceneToLoad: {
-            default: 'Lobby',
-            type: cc.String,
+            default: "Lobby",
+        },
+        label: {
+            default: null,
+            type: cc.Label,
         },
     },
 
@@ -25,19 +27,43 @@ cc.Class({
         if (this.progressTip) {
             this.progressTip.x = this.startPosX;
         }
+        this.labelChangeWhenLoading();
 
         this.startLoading();
     },
 
     startLoading() {
-        cc.director.preloadScene(this.sceneToLoad, this.onProgress.bind(this), (error) => {
-            if (error) {
-                cc.log('Tải scene thất bại:', error.message);
-                return;
-            }
+        cc.director.preloadScene(
+            this.sceneToLoad,
+            this.onProgress.bind(this),
+            (error) => {
+                if (error) {
+                    cc.log("Tải scene thất bại:", error.message);
+                    return;
+                }
 
-            this.progressBar.progress = 1;
-        });
+                this.progressBar.progress = 1;
+            }
+        );
+    },
+
+    labelChangeWhenLoading() {
+        if (!this.label) {
+            return;
+        }
+        let labelFrame = ["Loading", "Loading.", "Loading..", "Loading..."];
+        console.log(this.label.string);
+        let i = 0;
+        cc.tween(this.node).repeatForever(
+            cc
+                .tween()
+                .call(() => {
+                    this.label.string = labelFrame[i];
+                    i = (i + 1) % labelFrame.length;
+                    console.log(i);
+                })
+                .delay(0.5)
+        ).start();
     },
 
     onProgress(completedCount, totalCount, item) {
@@ -48,7 +74,9 @@ cc.Class({
 
     update(dt) {
         if (this.progressTip) {
-            const newX = this.startPosX + this.progressBar.totalLength * this.progressBar.progress;
+            const newX =
+                this.startPosX +
+                this.progressBar.totalLength * this.progressBar.progress;
             this.progressTip.x = newX;
         }
 
@@ -58,5 +86,5 @@ cc.Class({
                 cc.director.loadScene(this.sceneToLoad);
             }
         }
-    }
+    },
 });
