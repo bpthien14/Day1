@@ -1,26 +1,11 @@
+const mEmitter = require('mEmitter');
+const { SOUND_EVENTS, SHOW_EVENTS } = require('../Event/constants');
+
 cc.Class({
     extends: cc.Component,
-    properties:{
-        popupController: {
-            default: null,
-            type: require('popupController')
-        },
-    },
 
-    showSetting() {
-        this.popupController.showSetting();
-    },  
-    showRank() {
-        this.popupController.showRank();
-    },
-    hideSetting() {
-        this.popupController.hideSetting();
-    },
-    hideRank() {
-        this.popupController.hideRank();
-    },
-    onLoad() {
-        this.popupController.hideSetting();
-        this.popupController.hideRank();
-    },
+    onButtonClick(event, data){
+        mEmitter.instance.emit(SHOW_EVENTS.SHOW_POPUP, data);
+        mEmitter.instance.emit(SOUND_EVENTS.PLAY_SFX, 'click');
+    }
 })

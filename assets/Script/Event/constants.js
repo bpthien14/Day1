@@ -4,6 +4,11 @@ const SOUND_EVENTS = {
     PLAY_SFX: 'PLAY_SFX'
 };
 
+const SHOW_EVENTS = {
+    SHOW_POPUP: 'SHOW_POPUP',
+};
+
 module.exports = {
-    SOUND_EVENTS
+    SOUND_EVENTS,
+    SHOW_EVENTS
 };

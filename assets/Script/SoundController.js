@@ -16,9 +16,6 @@ cc.Class({
     },
 
     onLoad() {
-        if (!mEmitter.instance) {
-            mEmitter.instance = new mEmitter();
-        }
         
         this.loadVolumeSettings();
 
@@ -55,9 +52,7 @@ cc.Class({
         mEmitter.instance.emit('VOLUME_DATA_CHANGED', {
             type: 'bgm',
             volume: this.bgmVolume
-        });
-        
-        console.log(`BGM volume changed to: ${Math.round(this.bgmVolume * 100)}%`);
+        });    
     },
 
     setSFXVolume(volume) {
@@ -67,9 +62,7 @@ cc.Class({
         mEmitter.instance.emit('VOLUME_DATA_CHANGED', {
             type: 'sfx',
             volume: this.sfxVolume
-        });
-        
-        console.log(`SFX volume changed to: ${Math.round(this.sfxVolume * 100)}%`);
+        });        
     },
 
     playTestSFX() {

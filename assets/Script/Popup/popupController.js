@@ -1,3 +1,6 @@
+const mEmitter = require('mEmitter');
+const { SHOW_EVENTS } = require('../Event/constants');
+
 cc.Class({
     extends: cc.Component,
     
@@ -13,61 +16,17 @@ cc.Class({
     },
     
     onLoad() {
-        
-        
+        mEmitter.instance.registerEvent(SHOW_EVENTS.SHOW_POPUP, this.showPopup.bind(this));
     },
     
-    showSetting() {
-        this.hideRank();
-        
-        if (this.popupSetting) {
-            let settingScript = this.popupSetting.getComponent('popupSetting');
-            if (settingScript) {
-                settingScript.show();
-            } else {
-                console.error("popupSetting script not found!");
-            }
-        } else {
-            console.error("popupSetting node not assigned!");
+    showPopup(name) {
+        if (name === 'SETTING') {
+            this.popupSetting.getComponent('popupSetting').show();
+            
+        }
+        if (name === 'RANKING') {
+            this.popupRank.getComponent('popupRank').show();
         }
     },
-    
-    showRank() {
-        this.hideSetting();
-        
-        if (this.popupRank) {
-            let rankScript = this.popupRank.getComponent('popupRank');
-            if (rankScript) {
-                rankScript.show();
-            } else {
-                console.error("popupRank script not found!");
-            }
-        } else {
-            console.error("popupRank node not assigned!");
-        }
-    },
-    
-    hideSetting() {
-        if (this.popupSetting) {
-            let settingScript = this.popupSetting.getComponent('popupSetting');
-            if (settingScript) {
-                settingScript.hide();
-            }
-        }
-    },
-    
-    hideRank() {
-        if (this.popupRank) {
-            let rankScript = this.popupRank.getComponent('popupRank');
-            if (rankScript) {
-                rankScript.hide();
-            }
-        }
-    },
-    
-    hideAllPopups() {
-        this.hideSetting();
-        this.hideRank();
-    },
-    
+
 });

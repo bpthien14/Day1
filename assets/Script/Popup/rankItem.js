@@ -1,4 +1,3 @@
-// [MỚI] Tạo một đối tượng cache tĩnh để lưu trữ các SpriteFrame đã được tải
 const _avatarCache = {};
 
 cc.Class({
@@ -39,8 +38,8 @@ cc.Class({
 
     _getTopRankColor(rank) {
         if (rank === 1) return cc.Color.YELLOW;
-        if (rank === 2) return new cc.Color(186, 219, 243); // Bạc
-        if (rank === 3) return new cc.Color(205, 127, 50);  // Đồng
+        if (rank === 2) return new cc.Color(186, 219, 243); 
+        if (rank === 3) return new cc.Color(205, 127, 50); 
         return cc.Color.WHITE;
     },
 
@@ -78,7 +77,6 @@ cc.Class({
 
         if (_avatarCache[finalUrl]) {
             this.avatarSprite.spriteFrame = _avatarCache[finalUrl];
-            console.log(`Lấy avatar từ cache: ${finalUrl}`);
             this.adjustAvatarSize();
             return;
         }
@@ -90,7 +88,6 @@ cc.Class({
             this.setAvatarLoadingState(false);
 
             if (err) {
-                console.error(`Lỗi khi tải avatar từ URL: ${finalUrl}`, err.message);
                 if (finalUrl.includes("username=default")) {
                     this.avatarSprite.spriteFrame = null; 
                 } else {
@@ -105,7 +102,6 @@ cc.Class({
             
             this.avatarSprite.spriteFrame = spriteFrame;
             this.adjustAvatarSize();
-            console.log(`Đã tải và cache avatar thành công: ${finalUrl}`);
         });
     },
 
