@@ -38,8 +38,8 @@ cc.Class({
 
     _getTopRankColor(rank) {
         if (rank === 1) return cc.Color.YELLOW;
-        if (rank === 2) return new cc.Color(186, 219, 243); // Bạc
-        if (rank === 3) return new cc.Color(205, 127, 50);  // Đồng
+        if (rank === 2) return new cc.Color(186, 219, 243); 
+        if (rank === 3) return new cc.Color(205, 127, 50); 
         return cc.Color.WHITE;
     },
 
