@@ -1,4 +1,3 @@
-// [MỚI] Tạo một đối tượng cache tĩnh để lưu trữ các SpriteFrame đã được tải
 const _avatarCache = {};
 
 cc.Class({
