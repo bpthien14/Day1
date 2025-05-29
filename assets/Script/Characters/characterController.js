@@ -10,7 +10,7 @@ cc.Class({
             default: [],
             type: [cc.Node], 
         },
-        spawnInterval: 2.0,
+        spawnInterval: 4.0,
         maxMonsters: 10,
     },
 

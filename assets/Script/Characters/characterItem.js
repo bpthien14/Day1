@@ -38,7 +38,7 @@ cc.Class({
 
     update(dt) {
         if (this.isMoving) {
-            this.node.x -= this.moveSpeed * dt * 1.5;
+            this.node.x -= this.moveSpeed * dt * 2;
         }
 
         if (
