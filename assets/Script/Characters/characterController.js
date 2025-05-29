@@ -33,13 +33,11 @@ cc.Class({
     },
 
     spawnMonster() {
-        if (this.monsterList.length > this.maxMonsters) {
-            this.stopSpawning();
+        if (this.monsterList.length >= this.maxMonsters) {
             return;
         }
 
         const randomIndex = Math.floor(Math.random() * this.spawnPoints.length);
-        const spawnPoint = this.spawnPoints[randomIndex];
 
         let newMonster = cc.instantiate(this.monsterPrefab);
 
@@ -48,7 +46,7 @@ cc.Class({
         newMonster.parent = this.spawnPoints[randomIndex];
 
         this.monsterList.push(newMonster);
-        newMonster.getComponent('characterItem').init(this);
+        newMonster.getComponent('greenDog').init(this);
 
     },
 
