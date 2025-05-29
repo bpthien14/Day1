@@ -56,7 +56,6 @@ cc.Class({
     },
 
     onKilled() {
-        console.log("Trụ đã bị phá hủy!");
         this.node.active = false;
     }
 });

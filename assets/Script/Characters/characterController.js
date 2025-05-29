@@ -11,7 +11,7 @@ cc.Class({
             type: [cc.Node], 
         },
         spawnInterval: 2.0,
-        maxMonsters: 1,
+        maxMonsters: 10,
     },
 
     onLoad() {
@@ -25,8 +25,7 @@ cc.Class({
     },
 
     startSpawning() {
-        //this.schedule(this.spawnMonster, this.spawnInterval);
-        this.spawnMonster();
+        this.schedule(this.spawnMonster, this.spawnInterval);
     },
     
     stopSpawning() {

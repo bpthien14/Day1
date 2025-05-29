@@ -62,7 +62,6 @@ cc.Class({
             this.isAttacking = true;
             this.targetTower = other.node;
             this.attack();
-            console.log("Monster collided with tower:", this.targetTower.name);
             this.schedule(this.attack, this.attackInterval);
         }
     },

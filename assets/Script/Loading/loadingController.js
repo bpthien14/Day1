@@ -52,7 +52,6 @@ cc.Class({
             return;
         }
         let labelFrame = ["Loading", "Loading.", "Loading..", "Loading..."];
-        console.log(this.label.string);
         let i = 0;
         cc.tween(this.node).repeatForever(
             cc
