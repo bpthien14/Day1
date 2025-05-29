@@ -60,7 +60,6 @@ cc.Class({
                 .call(() => {
                     this.label.string = labelFrame[i];
                     i = (i + 1) % labelFrame.length;
-                    console.log(i);
                 })
                 .delay(0.5)
         ).start();
