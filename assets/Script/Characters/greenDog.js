@@ -5,6 +5,7 @@ cc.Class({
 
     properties: {
         hp: 80, 
+        overide: true,
     },
 
     onLoad() {
