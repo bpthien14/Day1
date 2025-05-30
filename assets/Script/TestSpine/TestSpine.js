@@ -18,7 +18,6 @@ cc.Class({
 
     onLoad() {
         if (!this.spineCharacter || !this.buttonPrefab || !this.buttonLayout) {
-            cc.error("Vui lòng gán đầy đủ các thuộc tính (properties) trong Inspector.");
             return;
         }
 
