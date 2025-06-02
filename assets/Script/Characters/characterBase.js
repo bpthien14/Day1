@@ -6,21 +6,20 @@ cc.Class({
         moveSpeed: 50,
         attackDamage: 20,
         attackInterval: 1,
-
     },
-
 
     init(controller) {
         this.controller = controller;
+        this.damageTextManager = cc.find("Canvas").getComponent("DamageTextManager"); 
+        if (!this.damageTextManager) {
+            console.warn("DamageTextManager not found! Please add damageTextManager component to Canvas.");
+        }
     },
 
     onLoad() {
-        cc.director.getCollisionManager().enabled = true;
-
         this.isMoving = true;
         this.isAttacking = false;
         this.targetTower = null;
-
     },
 
     update(dt) {
@@ -47,6 +46,13 @@ cc.Class({
             this.isAttacking = true;
             this.targetTower = other.node;
 
+            const dogWorldPos = this.node.convertToWorldSpaceAR(cc.v2(0, 0));
+            const towerWorldPos = other.node.convertToWorldSpaceAR(cc.v2(0, 0));
+            this.lastCollisionPos = cc.v2(
+                (dogWorldPos.x + towerWorldPos.x) / 2,
+                (dogWorldPos.y + towerWorldPos.y) / 2
+            );
+
             this.attack();
             
             this.schedule(this.attack, this.attackInterval);
@@ -63,13 +69,23 @@ cc.Class({
         if (this.targetTower && this.targetTower.isValid) {
             this.playAttackEffect(() => {
                 if (this.targetTower && this.targetTower.isValid) {
-                    const towerController = this.targetTower.getComponent("towerController");
-                    if (towerController) {
-                        towerController.onHit(this.attackDamage);
+                    const towerItem = this.targetTower.getComponent("towerItem");
+                    if (towerItem) {
+                        towerItem.onHit(this.attackDamage);
+                        this.showDamageAtPosition(this.lastCollisionPos, this.attackDamage);
                     }
                 }
             });
         }
+    },
+
+    showDamageAtPosition(worldPos, damage) {
+        if (!this.damageTextManager) {
+            this.damageTextManager = cc.find("Canvas").getComponent("DamageTextManager");
+            if (!this.damageTextManager) return;
+        }
+        if (!worldPos) return;
+        this.damageTextManager.showDamageText(worldPos, damage);
     },
 
     resumeMovement() {
