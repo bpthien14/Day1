@@ -111,11 +111,9 @@ class BulletFactory {
     private static bulletData: Map<string, BulletData> = new Map();
     
     static createBullet(type: string): Bullet {
-        // Shared data
         if (!this.bulletData.has(type)) {
             this.bulletData.set(type, new BulletData(type));
         }
-        // Unique state
         return new Bullet(this.bulletData.get(type));
     }
 }
@@ -152,7 +150,6 @@ class IdleState implements IPlayerState {
     }
     
     update() {
-        // Check transitions
         if (this.player.isMoving()) {
             this.player.changeState(new RunState(this.player));
         }
