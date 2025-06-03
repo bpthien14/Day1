@@ -755,18 +755,6 @@
     "_id": "4eTIuIHn9N1rw2FWkpWcUJ"
   },
   {
-    "__type__": "f4b8cnSPipLb4wdnn9qW0w9",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 2
-    },
-    "_enabled": true,
-    "canvas": null,
-    "damageLayer": null,
-    "_id": "3baMNqtlxBi76IyFuAH0HB"
-  },
-  {
     "__type__": "45dceBxwq5CM7COy7JindBy",
     "_name": "",
     "_objFlags": 0,
@@ -775,5 +763,17 @@
     },
     "_enabled": true,
     "_id": "beDKkBoTVF6pgJgmJXeIMk"
+  },
+  {
+    "__type__": "d2cc5XmjX9B3JJoxDeT3Gqg",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true,
+    "canvas": null,
+    "damageLayer": null,
+    "_id": "5c5//Qwc5HNo8QoyXWviHy"
   }
 ]

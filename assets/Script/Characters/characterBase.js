@@ -10,10 +10,7 @@ cc.Class({
 
     init(controller) {
         this.controller = controller;
-        this.damageTextManager = cc.find("Canvas").getComponent("DamageTextManager"); 
-        if (!this.damageTextManager) {
-            console.warn("DamageTextManager not found! Please add damageTextManager component to Canvas.");
-        }
+        this.damageTextManager = cc.find("Canvas").getComponent("damageTextManager"); 
     },
 
     onLoad() {
@@ -81,7 +78,7 @@ cc.Class({
 
     showDamageAtPosition(worldPos, damage) {
         if (!this.damageTextManager) {
-            this.damageTextManager = cc.find("Canvas").getComponent("DamageTextManager");
+            this.damageTextManager = cc.find("Canvas").getComponent("damageTextManager");
             if (!this.damageTextManager) return;
         }
         if (!worldPos) return;
