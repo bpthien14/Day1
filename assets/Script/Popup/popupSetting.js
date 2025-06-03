@@ -87,7 +87,7 @@ cc.Class({
         
         mEmitter.instance.emit(SOUND_EVENTS.SFX_VOLUME_CHANGED, this.sfxVolumeSlider.progress);
         
-        // mEmitter.instance.emit(SOUND_EVENTS.PLAY_SFX);
+        
     },
     
     onVolumeDataChanged(data) {

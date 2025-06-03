@@ -38,16 +38,21 @@ cc.Class({
         }
 
         const randomIndex = Math.floor(Math.random() * this.spawnPoints.length);
+        const spawnPoint = this.spawnPoints[randomIndex];
 
         let newMonster = cc.instantiate(this.monsterPrefab);
-
-        newMonster.setPosition(0,0);
+        newMonster.parent = this.node;
         
-        newMonster.parent = this.spawnPoints[randomIndex];
+        const worldPos = spawnPoint.convertToWorldSpaceAR(cc.v2(0, 0));
+        const nodePos = this.node.convertToNodeSpaceAR(worldPos);
+        newMonster.setPosition(nodePos);
+
+        const monsterComponent = newMonster.getComponent('greenDog');
+        if (monsterComponent) {
+            monsterComponent.init(this);
+        }
 
         this.monsterList.push(newMonster);
-        newMonster.getComponent('greenDog').init(this);
-
     },
 
     onMonsterKilled(monsterNode) {

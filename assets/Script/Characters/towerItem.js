@@ -4,12 +4,10 @@ cc.Class({
     properties: {
         hp: {
             default: 500,
-            tooltip: "Máu tối đa của trụ"
         },
         hpBar: {
             default: null,
             type: cc.ProgressBar,
-            tooltip: "Thanh máu của trụ (tùy chọn)"
         }
     },
 
@@ -31,7 +29,7 @@ cc.Class({
         cc.tween(this.node)
             .to(0.05, { position: cc.v2(this.originalPos.x + 5, this.originalPos.y) })
             .to(0.05, { position: cc.v2(this.originalPos.x - 5, this.originalPos.y) })
-            .to(0.05, { position: this.originalPos }) // Trở về vị trí gốc
+            .to(0.05, { position: this.originalPos }) 
             .call(() => {
                 this.node.color = this.originalColor;
             })

@@ -235,8 +235,8 @@
       "x": 0,
       "y": 0
     },
-    "_fillStart": 0,
-    "_fillRange": 1,
+    "_fillStart": 1,
+    "_fillRange": -0.4,
     "_isTrimmedMode": true,
     "_atlas": null,
     "_id": ""
@@ -400,8 +400,8 @@
       "__id__": 4
     },
     "_N$mode": 2,
-    "_N$progress": 1,
-    "_N$reverse": false,
+    "_N$progress": 0.4,
+    "_N$reverse": true,
     "_id": ""
   },
   {
@@ -478,8 +478,14 @@
     "_enabled": true,
     "hp": 80,
     "moveSpeed": 50,
-    "attackDamage": 20,
+    "attackDamage": 200,
     "attackInterval": 1.5,
+    "dotDamage": 20,
+    "dotInterval": 1,
+    "overide": true,
+    "hpBar": {
+      "__id__": 10
+    },
     "_id": ""
   },
   {

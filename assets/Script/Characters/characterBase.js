@@ -1,3 +1,6 @@
+const CharacterStates = require('./CharacterStates');
+const StateMachine = require('javascript-state-machine');
+
 cc.Class({
     extends: cc.Component,
 
@@ -6,26 +9,142 @@ cc.Class({
         moveSpeed: 50,
         attackDamage: 20,
         attackInterval: 1,
+        hitStunDuration: 0.3, 
+    },
+
+    onLoad() {
+        this.currentState = CharacterStates.IDLE;
+        this.isMoving = false;
+        this.isAttacking = false;
+        this.targetTower = null;
+        this.walkTween = null;
+        this.currentHp = this.hp;
+        this.originalColor = null;
     },
 
     init(controller) {
         this.controller = controller;
-        this.damageTextManager = cc.find("Canvas").getComponent("damageTextManager"); 
+        const canvas = cc.find("Canvas");
+        if (!canvas) {
+            cc.error("Cannot find Canvas node!");
+            return;
+        }
+        this.damageTextManager = canvas.getComponent("damageTextManager");
+        if (!this.damageTextManager) {
+            cc.error("Cannot find damageTextManager component!");
+            return;
+        }
+
+        const sprite = this.node.getComponent(cc.Sprite);
+        if (sprite) {
+            this.originalColor = sprite.node.color.clone();
+        }
+        
+        this.initStateMachine();
+        
+        this.scheduleOnce(() => {
+            if (this.fsm) {
+                this.setState(CharacterStates.MOVING);
+            }
+        }, 0);
     },
 
-    onLoad() {
-        this.isMoving = true;
-        this.isAttacking = false;
-        this.targetTower = null;
+    initStateMachine() {
+        this.fsm = new StateMachine({
+            init: CharacterStates.IDLE,
+            transitions: [
+                { name: 'move', from: '*', to: CharacterStates.MOVING },
+                { name: 'attack', from: '*', to: CharacterStates.ATTACKING },
+                { name: 'hit', from: '*', to: CharacterStates.BEING_HIT },
+                { name: 'die', from: '*', to: CharacterStates.DYING }
+            ],
+            methods: {
+                onEnterMoving: () => {
+                    this.isMoving = true;
+                    this.isAttacking = false;
+                    this.startWalkEffect();
+                    this.resetColor();
+                },
+                onEnterAttacking: () => {
+                    this.isMoving = false;
+                    this.isAttacking = true;
+                    this.attack();
+                    this.schedule(this.attack, this.attackInterval);
+                },
+                onEnterBeingHit: () => {
+                    this.isMoving = false;
+                    this.isAttacking = false;
+                    this.unscheduleAllCallbacks();
+                    this.changeColor();
+                    
+                    this.scheduleOnce(() => {
+                        if (this.fsm && this.fsm.state === CharacterStates.BEING_HIT) {
+                            if (this.targetTower) {
+                                this.setState(CharacterStates.ATTACKING);
+                            } else {
+                                this.setState(CharacterStates.MOVING);
+                            }
+                        }
+                    }, this.hitStunDuration);
+                },
+                onEnterDying: () => {
+                    this.isMoving = false;
+                    this.isAttacking = false;
+                    this.unscheduleAllCallbacks();
+                },
+                onLeaveAttacking: () => {
+                    this.unschedule(this.attack);
+                },
+                onLeaveMoving: () => {
+                    this.stopWalkEffect();
+                },
+                onLeaveBeingHit: () => {
+                    this.resetColor();
+                }
+            }
+        });
+    },
+
+    setState(newState) {
+        if (this.fsm.state === newState) return;
+        
+        switch(newState) {
+            case CharacterStates.MOVING:
+                this.fsm.move();
+                break;
+            case CharacterStates.ATTACKING:
+                this.fsm.attack();
+                break;
+            case CharacterStates.BEING_HIT:
+                this.fsm.hit();
+                break;
+            case CharacterStates.DYING:
+                this.fsm.die();
+                break;
+        }
+    },
+
+    changeColor() {
+        const sprite = this.node.getComponent(cc.Sprite);
+        if (sprite) {
+            sprite.node.color = cc.Color.RED;
+        }
+    },
+
+    resetColor() {
+        const sprite = this.node.getComponent(cc.Sprite);
+        if (sprite && this.originalColor) {
+            sprite.node.color = this.originalColor;
+        }
     },
 
     update(dt) {
-        if (this.isMoving) {
+        if (this.fsm && this.fsm.state === CharacterStates.MOVING) {
             this.node.x -= this.moveSpeed * dt * 2;
         }
 
-        if (this.isAttacking && (!this.targetTower || !this.targetTower.isValid)) {
-            this.resumeMovement();
+        if (this.fsm && this.fsm.state === CharacterStates.ATTACKING && (!this.targetTower || !this.targetTower.isValid)) {
+            this.setState(CharacterStates.MOVING);
         }
 
         if (this.node.x < -cc.winSize.width) {
@@ -33,14 +152,10 @@ cc.Class({
         }
     },
 
-
     onCollisionEnter: function (other, self) {
-        if (other.node.group === "Turret") {
+        if (other.node.group === "Turret" && this.currentState !== CharacterStates.DYING) {
             this.stopWalkEffect();
             this.node.angle = 0;
-
-            this.isMoving = false;
-            this.isAttacking = true;
             this.targetTower = other.node;
 
             const dogWorldPos = this.node.convertToWorldSpaceAR(cc.v2(0, 0));
@@ -50,15 +165,13 @@ cc.Class({
                 (dogWorldPos.y + towerWorldPos.y) / 2
             );
 
-            this.attack();
-            
-            this.schedule(this.attack, this.attackInterval);
+            this.setState(CharacterStates.ATTACKING);
         }
     },
 
     onCollisionExit: function (other, self) {
         if (other.node === this.targetTower) {
-            this.resumeMovement();
+            this.setState(CharacterStates.MOVING);
         }
     },
 
@@ -76,13 +189,13 @@ cc.Class({
         }
     },
 
-    showDamageAtPosition(worldPos, damage) {
+    showDamageAtPosition(worldPos, damage, isDot = false) {
         if (!this.damageTextManager) {
             this.damageTextManager = cc.find("Canvas").getComponent("damageTextManager");
             if (!this.damageTextManager) return;
         }
         if (!worldPos) return;
-        this.damageTextManager.showDamageText(worldPos, damage);
+        this.damageTextManager.showDamageText(worldPos, damage, isDot);
     },
 
     resumeMovement() {
@@ -94,14 +207,26 @@ cc.Class({
     },
 
     takeDamage(damage) {
-        this.hp -= damage;
-        if (this.hp <= 0) {
-            this.hp = 0;
+        this.currentHp = Math.max(0, this.currentHp - damage);
+        
+        const worldPos = this.node.convertToWorldSpaceAR(cc.v2(0, 30));
+        this.showDamageAtPosition(worldPos, damage);
+        
+        const greenDog = this.getComponent('greenDog');
+        if (greenDog && greenDog.hpBar) {
+            greenDog.hpBar.progress = this.currentHp / this.hp;
+        }
+
+        if (this.currentHp > 0) {
+            this.setState(CharacterStates.BEING_HIT);
+        } else {
+            this.setState(CharacterStates.DYING);
             this.onKilled();
         }
     },
 
     onKilled() {
+        this.setState(CharacterStates.DYING);
         if (this.controller) {
             this.controller.onMonsterKilled(this.node);
         }

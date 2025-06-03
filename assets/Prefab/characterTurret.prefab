@@ -434,7 +434,7 @@
     "_id": ""
   },
   {
-    "__type__": "a8b41E0tqBDxo+k5bTg5AH0",
+    "__type__": "7295agPn+lG3YYO6bMSQr1n",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -445,6 +445,12 @@
     "hpBar": {
       "__id__": 10
     },
+    "bulletPrefab": {
+      "__uuid__": "96a35642-9fd6-4eca-aade-43592d35fac9"
+    },
+    "fireRate": 1,
+    "range": 300,
+    "bulletController": null,
     "_id": ""
   },
   {
