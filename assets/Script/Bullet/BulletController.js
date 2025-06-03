@@ -45,7 +45,7 @@ cc.Class({
         const angle = Math.atan2(direction.y, direction.x) * 180 / Math.PI;
         bullet.angle = -angle; 
         
-        const bulletComponent = bullet.getComponent('Bullet');
+        const bulletComponent = bullet.getComponent('bullet');
         if (bulletComponent) {
             bulletComponent.init(direction, this.bulletSpeed, this.bulletDamage, this);
         }

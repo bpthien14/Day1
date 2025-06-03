@@ -476,13 +476,12 @@
       "__id__": 1
     },
     "_enabled": true,
-    "hp": 80,
-    "moveSpeed": 50,
-    "attackDamage": 200,
+    "hp": 120,
+    "moveSpeed": 200,
+    "attackDamage": 20,
     "attackInterval": 1.5,
-    "dotDamage": 20,
-    "dotInterval": 1,
-    "overide": true,
+    "hitStunDuration": 0.3,
+    "override": true,
     "hpBar": {
       "__id__": 10
     },

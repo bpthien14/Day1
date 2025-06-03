@@ -21,6 +21,8 @@ cc.Class({
 
     onLoad() {
         this.progressBar.progress = 0;
+        this.sceneLaunched = false;
+        this.loadingCompleted = false;
 
         this.startPosX = -this.progressBar.totalLength / 2;
 
@@ -39,9 +41,10 @@ cc.Class({
             (error) => {
                 if (error) {
                     cc.log("Tải scene thất bại:", error.message);
-                    return;
+                                        return;
                 }
 
+                this.loadingCompleted = true;
                 this.progressBar.progress = 1;
             }
         );
@@ -53,7 +56,7 @@ cc.Class({
         }
         let labelFrame = ["Loading", "Loading.", "Loading..", "Loading..."];
         let i = 0;
-        cc.tween(this.node).repeatForever(
+        this.labelTween = cc.tween(this.node).repeatForever(
             cc
                 .tween()
                 .call(() => {
@@ -78,11 +81,20 @@ cc.Class({
             this.progressTip.x = newX;
         }
 
-        if (this.progressBar.progress >= 1) {
-            if (!this.sceneLaunched) {
-                this.sceneLaunched = true;
-                cc.director.loadScene(this.sceneToLoad);
+        if (this.loadingCompleted && this.progressBar.progress >= 1 && !this.sceneLaunched) {
+            this.sceneLaunched = true;
+        
+            if (this.labelTween) {
+                this.labelTween.stop();
             }
+            
+            cc.director.loadScene(this.sceneToLoad);
         }
     },
+
+    onDestroy() {
+        if (this.labelTween) {
+            this.labelTween.stop();
+        }
+    }
 });

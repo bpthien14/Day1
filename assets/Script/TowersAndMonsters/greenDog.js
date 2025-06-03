@@ -5,7 +5,7 @@ cc.Class({
 
     properties: {
         hp: 80, 
-        overide: true,
+        override: true,
         hpBar: {
             default: null,
             type: cc.ProgressBar,

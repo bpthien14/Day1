@@ -1,4 +1,4 @@
-const CharacterStates = require('./CharacterStates');
+const CharacterStates = require('./characterStates');
 const StateMachine = require('javascript-state-machine');
 
 cc.Class({
