@@ -54,9 +54,9 @@ cc.Class({
             init: CharacterStates.IDLE,
             transitions: [
                 { name: 'move', from: ['hit', 'attack'], to: CharacterStates.MOVING },
-                { name: 'attack', from: 'move', to: CharacterStates.ATTACKING },
+                { name: 'attack', from: ['move','hit'], to: CharacterStates.ATTACKING },
                 { name: 'hit', from: ['attack', 'move'], to: CharacterStates.BEING_HIT },
-                { name: 'die', from: '*', to: CharacterStates.DYING }
+                { name: 'die', from: 'hit', to: CharacterStates.DYING }
             ],
             methods: {
                 onEnterMoving: () => {
