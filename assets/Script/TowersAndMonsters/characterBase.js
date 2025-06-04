@@ -56,7 +56,7 @@ cc.Class({
                 { name: 'move', from: '', to: CharacterStates.MOVING },
                 { name: 'attack', from: [CharacterStates.MOVING ,CharacterStates.BEING_HIT], to: CharacterStates.ATTACKING },
                 { name: 'hit', from: [CharacterStates.ATTACKING, CharacterStates.MOVING ], to: CharacterStates.BEING_HIT },
-                { name: 'die', from: CharacterStates.BEING_HIT, to: CharacterStates.DYING }
+                { name: 'die', from: '*', to: CharacterStates.DYING }
             ],
             methods: {
                 onEnterMoving: () => {
