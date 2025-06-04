@@ -53,10 +53,10 @@ cc.Class({
         this.fsm = new StateMachine({
             init: CharacterStates.IDLE,
             transitions: [
-                { name: 'move', from: ['hit', 'attack'], to: CharacterStates.MOVING },
-                { name: 'attack', from: ['move','hit'], to: CharacterStates.ATTACKING },
-                { name: 'hit', from: ['attack', 'move'], to: CharacterStates.BEING_HIT },
-                { name: 'die', from: 'hit', to: CharacterStates.DYING }
+                { name: 'move', from: [CharacterStates.BEING_HIT, CharacterStates.ATTACKING], to: CharacterStates.MOVING },
+                { name: 'attack', from: [CharacterStates.MOVING ,CharacterStates.BEING_HIT], to: CharacterStates.ATTACKING },
+                { name: 'hit', from: [CharacterStates.ATTACKING, CharacterStates.MOVING ], to: CharacterStates.BEING_HIT },
+                { name: 'die', from: CharacterStates.BEING_HIT, to: CharacterStates.DYING }
             ],
             methods: {
                 onEnterMoving: () => {
