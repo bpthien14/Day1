@@ -54,8 +54,8 @@ cc.Class({
             init: CharacterStates.IDLE,
             transitions: [
                 { name: 'move', from: '*', to: CharacterStates.MOVING },
-                { name: 'attack', from: '*', to: CharacterStates.ATTACKING },
-                { name: 'hit', from: '*', to: CharacterStates.BEING_HIT },
+                { name: 'attack', from: 'move', to: CharacterStates.ATTACKING },
+                { name: 'hit', from: ['attack', 'move'], to: CharacterStates.BEING_HIT },
                 { name: 'die', from: '*', to: CharacterStates.DYING }
             ],
             methods: {
