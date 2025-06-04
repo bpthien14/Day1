@@ -152,7 +152,7 @@ cc.Class({
         }
     },
 
-    onCollisionEnter: function (other, self) {
+    onCollisionEnter(other, self) {
         if (other.node.group === "Turret" && this.currentState !== CharacterStates.DYING) {
             this.stopWalkEffect();
             this.node.angle = 0;
@@ -169,7 +169,7 @@ cc.Class({
         }
     },
 
-    onCollisionExit: function (other, self) {
+    onCollisionExit(other, self) {
         if (other.node === this.targetTower) {
             this.setState(CharacterStates.MOVING);
         }
